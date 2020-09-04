@@ -1,0 +1,15 @@
+{% extends './layout.html' %}
+
+{% block title %}
+	{{ entry.title }}
+{% endblock %}
+
+{% block body %}
+	<form action="{% url 'encyclopedia:save_changes' entry.title %}" method="POST">
+		{% csrf_token %}
+
+		<textarea style="height: 60vh" name="content" cols="20" rows="8">{{ entry.content }}</textarea>
+		<br>
+		<button>Save changes</button>
+	</form>
+{% endblock %}
